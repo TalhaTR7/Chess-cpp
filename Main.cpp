@@ -2,43 +2,46 @@
 using namespace std;
 
 #define dimension 8
-char** Board;
-
-struct position {
-    int row, col;
-    position (int x = 0, int y = 0)
-        :row(x),  col(y) {}
-};
-
+char** Board = nullptr;
 
 void initialize() {
     Board = new char* [dimension];
     for (int i = 0; i < dimension; i++) {
         Board[i] = new char [dimension];
-        for (int y = 0; y < dimension; y++) {
-            Board[i][y] = '.';
+        for (int j = 0; j < dimension; j++) {
+            if (i == 0 and j == 0 || i == 0 and j == 7) Board[i][j] = 'R';
+            else if (i == 0 and j == 1 || i == 0 and j == 6) Board[i][j] = 'H';
+            else if (i == 0 and j == 2 || i == 0 and j == 5) Board[i][j] = 'B';
+            else if (i == 7 and j == 0 || i == 7 and j == 7) Board[i][j] = 'r';
+            else if (i == 7 and j == 1 || i == 7 and j == 6) Board[i][j] = 'h';
+            else if (i == 7 and j == 2 || i == 7 and j == 5) Board[i][j] = 'b';
+            else if (i == 1) Board[i][j] = 'P';
+            else if (i == 0 and j == 3) Board[i][j] = 'K';
+            else if (i == 0 and j == 4) Board[i][j] = 'Q';
+            else if (i == 6) Board[i][j] = 'p';
+            else if (i == 7 and j == 3) Board[i][j] = 'k';
+            else if (i == 7 and j == 4) Board[i][j] = 'q';
+            else Board[i][j] = '.';
         }
     }
 }
 
+char givePiece(int row, int col) {
+    return Board[row][col];
+}
+
+
 void printBoard() {
-    char label1 = 'A', label2 = 'H';
-    cout << "   1 2 3 4 5 6 7 8" << endl << endl;
+    cout << endl;
     for (int i = 0; i < dimension; i++) {
-        cout << label1++ << ' ' << ' ';
-        for (int j = 0; j < dimension; j++) {
+        for (int j = 0; j < dimension; j++)
             cout << Board[i][j] << ' ';
-        }
-        cout << ' ' << label2-- << endl;
+        cout << endl;
     }
-    cout << endl << "   8 7 6 5 4 3 2 1" << endl;
+
 }
 
 int main() {
-    
-    // Initialize the board.
     initialize();
-    
-    // Print initial state of the board.
     printBoard();
 }
