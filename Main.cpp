@@ -82,9 +82,7 @@ void makeMove() {
 int main() {
     char row;
     int col;
-    while (1) {
     cout << "enter: ";
     cin >> row >> col;
     cout << verifyBox(row, col);
-    }
 }
