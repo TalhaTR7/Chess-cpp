@@ -80,5 +80,11 @@ void makeMove() {
 }
 
 int main() {
-    cout << "Pick: ";
+    char row;
+    int col;
+    while (1) {
+    cout << "enter: ";
+    cin >> row >> col;
+    cout << verifyBox(row, col);
+    }
 }
