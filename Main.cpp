@@ -34,7 +34,7 @@ char givePiece(int row, int col) {
 
 
 void switchTurn() {
-    if  (turn == player::BLACK) turn = player::WHITE;
+    if (turn == player::BLACK) turn = player::WHITE;
     else turn = player::BLACK;
 }
 
