@@ -35,25 +35,25 @@ public:
     }
 };
 
-/*
+
 card* deck = nullptr;
 
 void fillDeck() {
-    string value[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     int cardID = 0;
     deck = new card[52];
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 13; j++) {
-            if (i == 0) deck[i] = card(cardID++, value[j], "Diamond");
-            else if (i == 1) deck[i] = card(cardID++, value[j], "Clubs");
-            else if (i == 2) deck[i] = card(cardID++, value[j], "Hearts");
-            else deck[i] = card(cardID++, value[j], "Spades");
-        }
+    for (int i = 0; i < 52; i++) {
+        if (i / 13 == 0) deck[i] = card(cardID++, (i % 13) + 1, 'D');
+        else if (i / 13 == 1) deck[i] = card(cardID++, (i % 13) + 1, 'C');
+        else if (i / 13 == 2) deck[i] = card(cardID++, (i % 13) + 1, 'H');
+        else deck[i] = card(cardID++, (i % 13) + 1, 'S');
     }
 }
-*/
+
 
 int main() {
-    card D5 = card(1, 10, 'S');
-    cout << D5;
+    fillDeck();
+    for (int i = 0; i < 52; i++) {
+        if (i % 13 == 0) cout << endl;
+        cout << deck[i] << ' ';
+    }
 }
